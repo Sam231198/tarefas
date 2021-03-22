@@ -3,7 +3,7 @@
 Instale essas ferramentas para rodar o projeto:
 
 - [Java 11](https://jdk.java.net/java-se-ri/11)
-- [PostgreSQL](https://www.postgresql.org/download/ "PostgreSQL")
+- [MySQL](https://www.mysql.com/downloads/)
 
 Framework utilizado:
 

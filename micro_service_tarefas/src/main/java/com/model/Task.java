@@ -1,12 +1,19 @@
 package com.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Task {
 
-	private int id;
-	private String titilo;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+	
+	private String titulo;
+	
 	private String detalhe;
 
 	public int getId() {
@@ -17,12 +24,12 @@ public class Task {
 		this.id = id;
 	}
 
-	public String getTitilo() {
-		return titilo;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setTitilo(String titilo) {
-		this.titilo = titilo;
+	public void setTitulo(String titilo) {
+		this.titulo = titilo;
 	}
 
 	public String getDetalhe() {

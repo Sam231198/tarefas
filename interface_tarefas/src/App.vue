@@ -1,24 +1,33 @@
 <template>
   <div class="container-fluid">
     <div id="app" class="container">
-        <div class="row">
-            <div class="col">
-                <h1 class="fs-1 text-center">Tarefas</h1>
-                <CardAddTask/>
-            </div>
+      <h1 class="fs-1 text-center">Tarefas</h1>
+
+      <div class="row mb-5">
+        <div class="col">
+          <CardAddTask />
         </div>
+      </div>
+
+      <div class="row">
+        <div class="col mb-3">
+          <CardTask titulo="Teste de titulo" detalhe="teste de detalhes" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import CardAddTask from "./components/CardAddTask.vue";
+import CardTask from "./components/CardTask.vue";
 
 export default {
   name: "App",
-    components: {
-      CardAddTask,
-    },
+  components: {
+    CardAddTask,
+    CardTask,
+  },
 };
 </script>
 

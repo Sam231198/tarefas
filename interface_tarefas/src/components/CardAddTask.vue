@@ -1,24 +1,18 @@
 <template>
-  <div id="CardAddTask" class="card text-center">
-    <div class="card-header">Adicionar nova tarefa</div>
-    <div class="card-body">
-      <div class="mb-3">
-        <label for="titulo" class="form-label">Titulo</label>
-        <input
-          type="text"
-          class="form-control"
-          id="titulo"
-        />
-      </div>
-      <div class="mb-3">
-        <label for="detalhe" class="form-label">Detalhe</label>
-        <textarea class="form-control" id="detalhe" rows="3"></textarea>
-      </div>
-      <div class="mb-3">
-        <button class="btn btn-success">Adicionar</button>
+    <div class="card text-center text-white bg-dark shadow">
+      <div class="bg-secondary card-header">Adicionar nova tarefa</div>
+      <div class="card-body">
+        <div class="mb-3">
+          <input type="text" class="form-control" id="titulo" placeholder="Título" />
+        </div>
+        <div class="mb-3">
+          <textarea class="form-control" id="detalhe" placeholder="Detalhe" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+          <button class="btn btn-secondary">Adicionar</button>
+        </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -29,16 +23,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-#CardAddTask {
-  color: black;
+.form-control{
+    background-color: transparent;
+    color: white;
+    border: none;
 }
 
-.card-body{
-    background-color: #535353;
-}
-
-.card-header{
-    background-color: #1a1a1a;
+.form-control:focus{
+    background-color: transparent;
     color: white;
 }
 </style>

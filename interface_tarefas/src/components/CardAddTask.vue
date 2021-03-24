@@ -1,18 +1,22 @@
 <template>
-    <div class="card text-center text-white bg-dark shadow">
-      <div class="bg-secondary card-header">Adicionar nova tarefa</div>
-      <div class="card-body">
-        <div class="mb-3">
-          <input type="text" class="form-control" id="titulo" placeholder="Título" />
-        </div>
-        <div class="mb-3">
-          <textarea class="form-control" id="detalhe" placeholder="Detalhe" rows="3"></textarea>
-        </div>
-        <div class="mb-3">
-          <button class="btn btn-secondary">Adicionar</button>
-        </div>
+  <v-card>
+    <v-card-title> Adicionar nova tarefa </v-card-title>
+    <v-card-text>
+      <div class="mb-3">
+        <v-text-field type="text" id="titulo" label="Título"> </v-text-field>
       </div>
-    </div>
+      <div class="mb-3">
+        <v-textarea id="detalhe" label="Detalhe" rows="3"></v-textarea>
+      </div>
+      <div class="text-center mb-3">
+
+        <v-btn class="mx-2" fab dark color="success">
+          <v-icon> mdi-plus </v-icon>
+        </v-btn>
+
+      </div>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>
@@ -22,15 +26,4 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.form-control{
-    background-color: transparent;
-    color: white;
-    border: none;
-}
-
-.form-control:focus{
-    background-color: transparent;
-    color: white;
-}
-</style>
+<style scoped></style>

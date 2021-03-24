@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-MicroServiceTarefasApplication<micro_service_tarefas>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.MicroServiceTarefasApplication",
+            "projectName": "micro_service_tarefas",
+            "args": ""
+        }
+    ]
+}

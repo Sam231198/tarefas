@@ -1,7 +1,7 @@
 <template>
   <v-col cols="12" xl="4" lg="4" md="6" sm="12">
     <v-card>
-      <v-crd-title> {{ titulo }} </v-crd-title>
+      <v-card-title> {{ titulo }} </v-card-title>
 
       <v-card-text>
         <v-row>
@@ -13,7 +13,6 @@
           </v-col>
         </v-row>
       </v-card-text>
-
     </v-card>
   </v-col>
 </template>

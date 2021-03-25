@@ -14,7 +14,7 @@
             v-for="tarefa in tarefas"
             :titulo="tarefa.titulo"
             :detalhe="tarefa.detalhe"
-            :key="tarefa.key"
+            :key="tarefa.id"
           />
         </v-row>
       </v-container>
@@ -34,38 +34,23 @@ export default {
   },
   data() {
     return {
-      tarefas: [
-        {
-          titulo: "Titulo 1",
-          detalhe: "Detalhe 1",
-        },
-        {
-          titulo: "Titulo 2",
-          detalhe: "Detalhe 2",
-        },
-        {
-          titulo: "Titulo 3",
-          detalhe: "Detalhe 3",
-        },
-        {
-          titulo: "Titulo 4",
-          detalhe: "Detalhe 4",
-        },
-        {
-          titulo: "Titulo 5",
-          detalhe: "Detalhe 5",
-        },
-      ],
+      tarefas: null,
     };
+  },
+  mounted() {
+    this.axios
+      .get("https://3000-amethyst-crane-z0c7qxrb.ws-us03.gitpod.io/")
+      .then((response) => (this.tarefas = response.data))
+      .catch((error) => console.log(error));
   },
 };
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Damion&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Damion&display=swap");
 
-h1{
-    font-family: 'Damion', cursive;
-    font-size: 90px;
+h1 {
+  font-family: "Damion", cursive;
+  font-size: 90px;
 }
 </style>

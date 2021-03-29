@@ -1,4 +1,4 @@
-package com.Swagger;
+package br.com.task.config;
 
 import java.util.ArrayList;
 

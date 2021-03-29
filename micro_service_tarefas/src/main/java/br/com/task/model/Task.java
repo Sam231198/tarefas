@@ -1,4 +1,4 @@
-package com.model;
+package br.com.task.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

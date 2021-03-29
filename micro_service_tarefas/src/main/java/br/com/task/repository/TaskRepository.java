@@ -1,4 +1,4 @@
-package com.repository;
+package br.com.task.repository;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;

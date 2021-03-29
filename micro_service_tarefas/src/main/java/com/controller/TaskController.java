@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,16 +31,14 @@ public class TaskController {
 	@Autowired
 	private TaskRepository taskRepository;
 
-	@GetMapping
+	@GetMapping("/get")
 	@ApiOperation(value = "Retorna uma lista de tarefas")
 	public List<Task> index() {
 		return this.taskRepository.findAll();
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping(value = "/get/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ApiOperation(value = "Retorna uma tarefa")
-	@ApiImplicitParam(name="id", value="id da tarefa", required =
-			true, dataType = "Map", paramType = "query")
 	public Optional<Task> getTask(@PathVariable("id") Integer id) {
 		return this.taskRepository.findById(id);
 	}
@@ -47,29 +46,29 @@ public class TaskController {
 	@PostMapping
 	@ApiOperation(value = "Salva uma tarefa")
 	public Task add(@RequestBody Task task) {
-		return this.taskRepository.save(task);
+	return this.taskRepository.save(task);
 	}
 
-	@PutMapping("/{id}")
+	@PutMapping("/update/{id}")
 	@ApiOperation(value = "Atualiza uma tarefa")
-	@ApiImplicitParam(name="id", value="id da tarefa", required =
-			true, dataType = "Map", paramType = "query")
-	public Task update(@PathVariable("id") int id, @RequestBody Task taskUpdate) {
-		Task task = this.taskRepository.findById(id).orElseThrow();
+	public Task update(@PathVariable("id") String id, @RequestBody Task
+	taskUpdate) {
+	Task task =
+	this.taskRepository.findById((Integer.parseInt(id))).orElseThrow();
 
-		task.setTitulo((taskUpdate.getTitulo() != null) ? taskUpdate.getTitulo() : task.getTitulo());
-		task.setDetalhe((taskUpdate.getDetalhe() != null) ? taskUpdate.getDetalhe() : task.getDetalhe());
+	task.setTitulo((taskUpdate.getTitulo() != null) ? taskUpdate.getTitulo() :
+	task.getTitulo());
+	task.setDetalhe((taskUpdate.getDetalhe() != null) ? taskUpdate.getDetalhe() :
+	task.getDetalhe());
 
-		return this.taskRepository.save(task);
+	return this.taskRepository.save(task);
 	}
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/delete/{id}")
 	@ApiOperation(value = "Deleta um tarefa")
-	@ApiImplicitParam(name="id", value="id da tarefa", required =
-			true, dataType = "Map", paramType = "query")
-	public ResponseEntity<?> delete(@PathVariable("id") int id) {
-		this.taskRepository.deleteById(id);
-		return ResponseEntity.ok().build();
+	public ResponseEntity<?> delete(@PathVariable("id") String id) {
+	this.taskRepository.deleteById(Integer.parseInt(id));
+	return ResponseEntity.ok().build();
 	}
 
 }

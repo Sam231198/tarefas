@@ -37,7 +37,7 @@ public class TaskController {
 		return this.taskRepository.findAll();
 	}
 
-	@GetMapping(value = "/get/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@GetMapping("/get/{id}")
 	@ApiOperation(value = "Retorna uma tarefa")
 	public Optional<Task> getTask(@PathVariable("id") Integer id) {
 		return this.taskRepository.findById(id);
@@ -45,30 +45,30 @@ public class TaskController {
 
 	@PostMapping
 	@ApiOperation(value = "Salva uma tarefa")
-	public Task add(@RequestBody Task task) {
-	return this.taskRepository.save(task);
+	public Task add(@RequestBody Task newTask) {
+		Task task = (Task) this.taskRepository;
+		task.setTitulo(newTask.getTitulo());
+		task.setDetalhe(newTask.getDetalhe());
+		task.setId(null);
+		return this.taskRepository.save(task);
 	}
 
 	@PutMapping("/update/{id}")
 	@ApiOperation(value = "Atualiza uma tarefa")
-	public Task update(@PathVariable("id") String id, @RequestBody Task
-	taskUpdate) {
-	Task task =
-	this.taskRepository.findById((Integer.parseInt(id))).orElseThrow();
+	public Task update(@PathVariable("id") Integer id, @RequestBody Task taskUpdate) {
+		Task task = this.taskRepository.findById(id).orElseThrow();
 
-	task.setTitulo((taskUpdate.getTitulo() != null) ? taskUpdate.getTitulo() :
-	task.getTitulo());
-	task.setDetalhe((taskUpdate.getDetalhe() != null) ? taskUpdate.getDetalhe() :
-	task.getDetalhe());
+		task.setTitulo((taskUpdate.getTitulo() != null) ? taskUpdate.getTitulo() : task.getTitulo());
+		task.setDetalhe((taskUpdate.getDetalhe() != null) ? taskUpdate.getDetalhe() : task.getDetalhe());
 
-	return this.taskRepository.save(task);
+		return this.taskRepository.save(task);
 	}
 
 	@DeleteMapping("/delete/{id}")
 	@ApiOperation(value = "Deleta um tarefa")
-	public ResponseEntity<?> delete(@PathVariable("id") String id) {
-	this.taskRepository.deleteById(Integer.parseInt(id));
-	return ResponseEntity.ok().build();
+	public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
+		this.taskRepository.deleteById(id);
+		return ResponseEntity.ok().build();
 	}
 
 }

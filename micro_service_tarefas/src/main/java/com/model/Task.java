@@ -22,7 +22,7 @@ public class Task {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	
+
 	private String titulo;
 	private String detalhe;
 }

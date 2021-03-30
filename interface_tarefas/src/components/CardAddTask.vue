@@ -9,11 +9,9 @@
         <v-textarea id="detalhe" label="Detalhe" rows="3"></v-textarea>
       </div>
       <div class="text-center mb-3">
-
         <v-btn class="mx-2" fab dark color="success" v-on:click="salvar">
           <v-icon> mdi-plus </v-icon>
         </v-btn>
-
       </div>
     </v-card-text>
   </v-card>
@@ -22,18 +20,19 @@
 <script>
 export default {
   name: "CardAddTask",
-  
+
   methods: {
-    salvar: function() {
+    salvar: function () {
       this.axios
-        .post("http://localhost:3000",{
-            "titulo": document.getElementById('titulo').value,
-            "detalhe": document.getElementById('detalhe').value,
+        .post("http://localhost:8080/save", {
+          detalhe: document.getElementById("detalhe").value,
+          id: 0,
+          titulo: document.getElementById("titulo").value,
         })
-        .then((response) => (console.log(response.data)))
+        .then((response) => console.log(response.data))
         .catch((error) => console.log(error));
     },
-  }
+  },
 };
 </script>
 

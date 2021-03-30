@@ -39,7 +39,7 @@ export default {
   },
   mounted() {
     this.axios
-      .get("https://3000-amethyst-crane-z0c7qxrb.ws-us03.gitpod.io/")
+      .get("http://localhost:8080/get")
       .then((response) => (this.tarefas = response.data))
       .catch((error) => console.log(error));
   },

@@ -21,7 +21,7 @@ public class SwaggerConfig {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).ignoredParameterTypes(Pageable.class).select()
-                .apis(RequestHandlerSelectors.basePackage("com.controller")).paths(PathSelectors.any()).build()
+                .apis(RequestHandlerSelectors.basePackage("br.com.task.controller")).paths(PathSelectors.any()).build()
                 .apiInfo(apiInfo());
     }
 

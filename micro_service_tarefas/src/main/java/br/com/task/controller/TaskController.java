@@ -15,17 +15,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.task.model.Task;
+import br.com.task.repository.TaskRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiImplicitParam;
 
-import com.model.Task;
-import com.repository.TaskRepository;
-
+@CrossOrigin(origins="http://localhost:8081", maxAge=3600)
 @RestController
 @Api(value = "API Rest Tarefas")
-@CrossOrigin(origins = "8")
 public class TaskController {
 
 	@Autowired
@@ -43,14 +40,10 @@ public class TaskController {
 		return this.taskRepository.findById(id);
 	}
 
-	@PostMapping
+	@PostMapping("/save")
 	@ApiOperation(value = "Salva uma tarefa")
 	public Task add(@RequestBody Task newTask) {
-		Task task = (Task) this.taskRepository;
-		task.setTitulo(newTask.getTitulo());
-		task.setDetalhe(newTask.getDetalhe());
-		task.setId(null);
-		return this.taskRepository.save(task);
+		return this.taskRepository.save(newTask);
 	}
 
 	@PutMapping("/update/{id}")

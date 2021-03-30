@@ -77,6 +77,12 @@
 			<artifactId>swagger-models</artifactId>
 			<version>1.5.21</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>

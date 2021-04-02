@@ -15,6 +15,7 @@
             :titulo="tarefa.titulo"
             :detalhe="tarefa.detalhe"
             :key="tarefa.id"
+            :IdTask="tarefa.id"
           />
         </v-row>
       </v-container>

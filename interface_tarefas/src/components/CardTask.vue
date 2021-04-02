@@ -9,7 +9,7 @@
             {{ detalhe }}
           </v-col>
           <v-col cols="3">
-            <v-btn fab dark><v-icon color="red"> mdi-delete </v-icon></v-btn>
+            <v-btn fab dark @click="deletar(IdTask)"><v-icon color="red"> mdi-delete </v-icon></v-btn>
           </v-col>
         </v-row>
       </v-card-text>
@@ -23,7 +23,18 @@ export default {
   props: {
     titulo: String,
     detalhe: String,
+    IdTask: Number
   },
+  methods: {
+    deletar(IdTask) {
+      this.axios
+        .delete(`http://localhost:8080/delete/${IdTask}`)
+        .then((response) => {
+          if (response.status === 200) document.location.reload()
+        })
+        .catch((error) => console.log(error));
+    }
+  }
 };
 </script>
 
